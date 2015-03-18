@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>To do List</title>
+  <title>ToDoList</title>
 </head>
 <body ng-app="ToDoList">
-  <div class="to-do-list" ng-controller="ToDoListController as td">
-    <form name="taskForm" ng-submit="taskForm.$valid && td.Incluir()" novalidate>
-      <input required type="text" ng-model="td.task_name" />
-      <input type="submit" value="Criar"/>
+  <div class="to-do-list" ng-controller="ToDoListController as c">
+    <form name="taskForm" ng-submit="taskForm.$valid && c.add()" novalidate>
+      <input required type="text" ng-model="c.task_name" id="txtTaskName" />
+      <input type="submit" value="Add"/>
     </form>
 
     <h3>To Do</h3>
     <ul>
-      <li ng-repeat="task in td.tasks | filter: { Completed: false }"><input type="checkbox" ng-model="task.Completed" ng-checked="{{task.Completed}}"> {{task.Text}}</li>
+      <li ng-repeat="task in c.tasks | filter: { completed: false } track by $index"><input type="checkbox" ng-model="task.completed" ng-change="c.save()" ng-checked="{{task.completed}}"> {{task.text}}</li>
     </ul>
 
     <h3>Done</h3>
     <ul>
-      <li ng-repeat="task in td.tasks | filter: { Completed: true }"><input type="checkbox" ng-model="task.Completed" ng-checked="{{task.Completed}}"> {{task.Text}}</li>
+      <li ng-repeat="task in c.tasks | filter: { completed: true } track by $index"><input type="checkbox" ng-model="task.completed" ng-change="c.save()" ng-checked="{{task.completed}}"> {{task.text}}</li>
     </ul>
   </div>
 
