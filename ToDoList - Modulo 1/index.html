@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To do List</title>
+</head>
+<body ng-app="ToDoList">
+  <div class="to-do-list" ng-controller="ToDoListController as td">
+    <form name="taskForm" ng-submit="taskForm.$valid && td.Incluir()" novalidate>
+      <input required type="text" ng-model="td.task_name" />
+      <input type="submit" value="Criar"/>
+    </form>
+
+    <h3>To Do</h3>
+    <ul>
+      <li ng-repeat="task in td.tasks | filter: { Completed: false }"><input type="checkbox" ng-model="task.Completed" ng-checked="{{task.Completed}}"> {{task.Text}}</li>
+    </ul>
+
+    <h3>Done</h3>
+    <ul>
+      <li ng-repeat="task in td.tasks | filter: { Completed: true }"><input type="checkbox" ng-model="task.Completed" ng-checked="{{task.Completed}}"> {{task.Text}}</li>
+    </ul>
+  </div>
+
+  <script src="js/bower_components/angular/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
