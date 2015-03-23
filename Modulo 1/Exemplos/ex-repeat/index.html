@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="angular.min.js"></script>
+  <script>
+    var app = angular.module('exemplo', []);
+
+    app.controller('ExemploController', function(){
+      this.participantes = ['José', 'João'];
+
+      this.incluir = function(){
+        this.participantes.push(this.participante);
+      };
+
+      this.excluir = function(index){
+        this.participantes.splice(index, 1);
+      };
+    });
+  </script>
+</head>
+<body ng-app="exemplo">
+  <div ng-controller="ExemploController as c">
+      <h1>Lista de participantes</h1>
+      <form ng-submit="c.incluir()">
+          <input type="text" ng-model="c.participante" placeholder="">
+          <input type="submit" value="incluir">
+      </form>
+      <ul>
+          <li ng-repeat="participante in c.participantes track by $index">
+            <a href="#" ng-click="c.excluir($index)">X</a> {{participante}}
+          </li>
+      </ul>
+  </div>
+</body>
+</html>

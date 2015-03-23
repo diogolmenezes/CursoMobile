@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>Minhas Tarefas</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <style>
+        body { font-family: 'Lato', sans-serif; background: #eee; font-size: 20px; }
+        .container { width:90%; margin: auto; }
+
+        h3 a { float: right; font-size: 14px; color: #4D6893; margin-top: 10px; }
+
+        form                      { background: #FFF; border-radius:4px; padding-left: 10px; }
+        form input                { padding:15px; font-size: 20px; }
+        form input[type="text"]   { width:50%; border:none; outline: none; }
+        form input[type="submit"] { float:right;  border-radius:4px; border:none; background: #81BC88; color: #FFF; }
+
+        ul    { padding: 0; list-style: none; }
+        ul li { background: #FFF; border-radius: 4px; padding:10px; margin-bottom: 10px; }
+
+        .tarefas-pendentes ul    { border-top:4px solid #DCC74E;}
+        .tarefas-completas ul    { border-top:4px solid #81BC88;}
+        .tarefas-completas ul li { text-decoration: line-through; color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minhas Tarefas</h1>
+
+        <form>
+            <input type="text" placeholder="Insira uma tarefa..." />
+            <input type="submit" value="Criar"/>
+        </form>
+
+        <div class="tarefas-pendentes">
+            <h3>Pendentes (3)</h3>
+            <ul>
+                <li><input type="checkbox" /> Tarefa 1</li>
+                <li><input type="checkbox" /> Tarefa 2</li>
+                <li><input type="checkbox" /> Tarefa 3</li>
+            </ul>
+        </div>
+
+        <div class="tarefas-completas">
+            <h3>Completas (2)<a href="#">ocultar</a></h3>
+            <ul>
+                <li><input type="checkbox" checked /> Tarefa 3</li>
+                <li><input type="checkbox" checked /> Tarefa 4</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

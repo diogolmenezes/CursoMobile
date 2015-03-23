@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>Minhas Tarefas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="MinhasTarefas">
+    <div class="container" ng-controller="TarefasController as c">
+        <h1>Minhas Tarefas</h1>
+
+        <form ng-submit="c.incluir()">
+            <input type="text" placeholder="Insira uma tarefa..." ng-model="c.tarefa" />
+            <input type="submit" value="Criar"/>
+        </form>
+
+        <div class="tarefas-pendentes">
+            <h3>Pendentes ({{c.totalPendentes()}})</h3>
+            <ul>
+                <li ng-repeat="tarefa in c.tarefas | filter: { completa: false } track by $index"><input type="checkbox" ng-change="c.salvar()" ng-model="tarefa.completa" /> {{tarefa.texto}}</li>
+            </ul>
+        </div>
+
+        <div class="tarefas-completas">
+            <h3>Completas ({{c.totalCompletas()}})<a href="#" ng-click="ocultar = !ocultar">ocultar</a></h3>
+            <ul ng-hide="ocultar">
+                <li ng-repeat="tarefa in c.tarefas | filter: { completa: true } track by $index"><input type="checkbox" ng-change="c.salvar()" ng-model="tarefa.completa" /> {{tarefa.texto}}</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="angular.min.js"></script>
+  <script>
+    angular.module('exemplo', []).controller('ExemploController', function(){
+        this.descobrir = function(){
+            this.resultado = (this.numero % 2 == 0) ? 'par' : 'impar';
+        };
+    });
+  </script>
+</head>
+<body ng-app="exemplo">
+  <div ng-controller="ExemploController as c">
+      <h1>Par ou Impar?</h1>
+      <form ng-submit="c.descobrir()">
+          <input type="text" ng-model="c.numero" placeholder="insira um número">
+          <input type="submit" value="descobrir">
+      </form>
+      {{c.resultado}}
+  </div>
+</body>
+</html>
