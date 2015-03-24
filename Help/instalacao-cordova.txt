@@ -1,0 +1,42 @@
+
+Para instalar o cordova e poder enfim compilar seu app para rodar nos devices mobile
+você terá instalar e configurar também o java JDK, o ant, a api do android além de baixar pelo meno suma versão do antroid e do platform-tool.
+
+A própria docimentação do cordova recomenda que você faça sua instalação via linha de comando e para isso você vai precisar do NPM que é o
+gerenciador de pacotes utilizado pelo nodeJs.
+
+Então, para começar você precisa ir até https://nodejs.org/ fazer a instalação do node. No fim dessa instalação você já deve ter o comando NPM disponível em seu prompt de comando / shell. Como muita gente usa windows,
+esse artigo está baseado nessa plataforma mas já realizei com sucesso os mesmos passos em um mac.
+
+Agora que você já tem o NPM funcionando, instale o cordova:
+
+$ npm install -g cordova
+
+Todos os passos desse tutorial foram tirados da documentação oficial do cordova (http://cordova.apache.org/docs/en/4.0.0//guide_cli_index.md.html#The%20Command-Line%20Interface)
+
+Em seguida, temos que baixar a SDK do android, http://developer.android.com/sdk/index.html. É importante ficar atendo ao caminho dessa insta~lação pois teremos que colocar-lo no path do sistema.
+
+No meu caso (windows), a instalação do pacote installer_r24.1.2-windows.exe ficou em C:\Program Files (x86)\Android\android-sdk\.
+
+Agora que já temos o SDK do android em seu devido lugar, precisamos fazer a instalação dos itens adicionais platform-tools e uma versão do android, no momento desse tutorial eu instalei as 2 mais recentes que são a 21 e a 22.
+
+Para isso, abra o Android SDK Manager "C:\Program Files (x86)\Android\android-sdk\tools\android.BAT" e selecione as opções, platform-tools / API21 / API22 e espere o download e a instalação terminar.
+
+Caso tudo corra bem, dentro de C:\Program Files (x86)\Android\android-sdk\platforms você deverá encontrar as versões baixadas do android.
+
+Agora que já temos tudo que precisamos do Android SDK podemos colocar esses caminhos no path "C:\Program Files (x86)\Android\android-sdk\tools;C:\Program Files (x86)\Android\android-sdk\platform-tools".
+
+É importante lembrar que além da SDK do android e do cordova instalados, você vai precisar  ter o JDK (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html?ssSourceSiteId=otnpt) e o ANT (http://ant.apache.org/bindownload.cgi) configurados na sua máquina. Para isso giga os procedimentos normais de instalação dos mesmos e não esqueça de colocar
+o caminho de seus binarios no PATH do sistema. No meu caso o java foi instalado e o ant foi apenas baixado e extraido em uma pasta da minha escolha, que em seguida foram colocadas no PATH do windows.
+
+Depois de tudo isso, você já deve ser capaz de criar e compilar aplicações android. O cordova permite incluir diversas plataformas como ios, windows etc mas para cada uma delas você deverá seguir a documentação da plataforma escolhida, como eu
+só usei o android nesse artigo, segui o guia da plataforma android (http://cordova.apache.org/docs/en/4.0.0//guide_platforms_android_index.md.html#Android%20Platform%20Guide)
+
+Criando uma aplicação teste
+
+$ cordova create teste com.aplicacao.teste AplicacaoTeste
+$ cordova platform add android
+
+Ligue seu telefone no computador e:
+
+$ cordova run android
