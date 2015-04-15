@@ -1,0 +1,8 @@
+<ons-page>
+    <div ng-controller="TarefasController as c">
+        <ul class="list">
+            <li class="list__item" ng-click="menu.setMainPage('templates/pendentes.html', { closeMenu: true })">Pendentes <span class="notification">{{c.totalTarefas(false)}}</span></li>
+            <li class="list__item" ng-click="menu.setMainPage('templates/completas.html', { closeMenu: true })">Completas <span class="notification">{{c.totalTarefas(true)}}</span></li>
+        </ul>
+    </div>
+</ons-page>

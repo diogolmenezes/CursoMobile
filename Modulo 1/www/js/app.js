@@ -1,26 +1,26 @@
-(function(){
-    var app = angular.module('MinhasTarefas', []);
+var app = angular.module('MinhasTarefas', []);
 
-    app.controller('TarefasController', function($filter){
-        this.tarefas = JSON.parse(localStorage.getItem('Tarefas')) || [];
+app.controller('TarefasController', function($filter){
+    this.tarefas = JSON.parse(localStorage.getItem("Tarefas")) || [];
 
-        this.incluir = function(){
-            this.tarefas.push({ texto: this.tarefa, completa: false });
-            this.tarefa = '';
-            this.salvar();
-        };
+    this.totalTarefas = function(completa){
+        return $filter('filter')(this.tarefas, { Completa: completa }).length;
+    };
 
-        this.salvar = function(){
-            localStorage.setItem('Tarefas', JSON.stringify(this.tarefas));
-        };
+    this.incluir = function(){
+        this.tarefas.push({ Texto: this.tarefa, Completa: false});
+        this.salvar();
+        this.tarefa = "";
+        nome_tarefa.focus();
+    };
 
-        this.totalCompletas = function(){
-            return $filter('filter')(this.tarefas, {completa : true }).length;
-        };
+    this.excluir = function(tarefa){
+        var index = this.tarefas.indexOf(tarefa);
+        this.tarefas.splice(index, 1);
+        this.salvar();
+    };
 
-        this.totalPendentes = function(){
-            return $filter('filter')(this.tarefas, {completa : false }).length;
-        };
-    });
-
-})();
+    this.salvar = function(){
+        localStorage.setItem("Tarefas", JSON.stringify(this.tarefas));
+    };
+});
